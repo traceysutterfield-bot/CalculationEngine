@@ -5,57 +5,47 @@
   <title>Percentage Increase Calculator</title>
   <meta name="description" content="Calculate the percentage increase from an original value to a new value. Free, fast, and easy to use.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
 
+  <!-- Shared site styles -->
   <link rel="stylesheet" href="/styles.css">
-
 </head>
-<script src="/script.js" defer></script>
+
 <body>
+  <header>
+    <h1>Percentage Increase Calculator</h1>
+    <p>
+      Use this calculator to find the percentage increase from an original value to a new value.
+    </p>
+  </header>
 
-  <h1>Percentage Increase Calculator</h1>
+  <main>
+    <section>
+      <label for="originalValue">Original Value</label>
+      <input
+        type="number"
+        id="originalValue"
+        inputmode="decimal"
+        placeholder="Enter original value"
+      >
 
-  <p>
-    Use this calculator to find the percentage increase from an original value to a new value.
-  </p>
+      <label for="newValue">New Value</label>
+      <input
+        type="number"
+        id="newValue"
+        inputmode="decimal"
+        placeholder="Enter new value"
+      >
 
-  <label for="originalValue">Original Value</label>
-  <input type="number" id="originalValue" placeholder="Enter original value">
+      <button id="calcBtn" type="button">Calculate</button>
 
-  <label for="newValue">New Value</label>
-  <input type="number" id="newValue" placeholder="Enter new value">
+      <div class="result" id="result" aria-live="polite"></div>
 
-  <button id="calcBtn" type="button">Calculate</button>
+      <a class="back-link" href="/">← Back to Calculation Engine</a>
+    </section>
+  </main>
 
-  <div class="result" id="result"></div>
-
-  <a class="back-link" href="/">← Back to Calculation Engine</a>
-
-  <script>
-    function calculateIncrease() {
-      const original = parseFloat(document.getElementById('originalValue').value);
-      const newVal = parseFloat(document.getElementById('newValue').value);
-      const resultDiv = document.getElementById('result');
-
-      if (isNaN(original) || isNaN(newVal)) {
-        resultDiv.textContent = 'Please enter valid numbers.';
-        return;
-      }
-
-      if (original === 0) {
-        resultDiv.textContent = 'Original value cannot be zero.';
-        return;
-      }
-
-      const increase = ((newVal - original) / original) * 100;
-      resultDiv.textContent = `Percentage Increase: ${increase.toFixed(2)}%`;
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      document
-        .getElementById('calcBtn')
-        .addEventListener('click', calculateIncrease);
-    });
-  </script>
-
+  <!-- Shared site scripts -->
+  <script src="/script.js" defer></script>
 </body>
 </html>
