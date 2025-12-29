@@ -1,47 +1,70 @@
+/* ====== Base / Reset-ish ====== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: Arial, sans-serif;
-  max-width: 700px;
-  margin: 40px auto;
-  padding: 20px;
   line-height: 1.6;
+  color: #111;
+  background: #fff;
 }
 
+/* ====== Layout ====== */
 header, main, footer {
-  margin-bottom: 24px;
+  display: block;
 }
 
+body > header,
+body > main,
+body > footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+body > header {
+  padding-bottom: 8px;
+}
+
+body > main {
+  padding-top: 8px;
+}
+
+/* ====== Typography ====== */
 h1 {
+  margin: 0 0 12px 0;
+  font-size: 34px;
+  font-weight: 700;
   text-align: center;
-  margin-bottom: 12px;
+}
+
+p {
+  margin: 0 0 12px 0;
+}
+
+/* ====== Calculator form styling ====== */
+main section {
+  margin-top: 12px;
 }
 
 label {
   display: block;
-  margin-top: 15px;
-  font-weight: bold;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-weight: 700;
 }
 
-input {
+input[type="number"],
+input[type="text"] {
+  display: block;
   width: 100%;
-  padding: 10px;
-  margin-top: 6px;
+  padding: 10px 12px;
   font-size: 16px;
-  box-sizing: border-box;
-}
-
-button {
-  margin-top: 18px;
-  padding: 10px 18px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.result {
-  margin-top: 18px;
-  font-weight: bold;
-}
-
-.back-link {
-  margin-top: 24px;
-  display: inline-block;
-}
+  border: 1px solid #cfcfcf;
+  border-radius: 6px;
