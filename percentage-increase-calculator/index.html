@@ -87,4 +87,16 @@
         return;
       }
 
-      const increase = ((newVal - orig
+      const increase = ((newVal - original) / original) * 100;
+      resultDiv.textContent = `Percentage Increase: ${increase.toFixed(2)}%`;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document
+        .getElementById('calcBtn')
+        .addEventListener('click', calculateIncrease);
+    });
+  </script>
+
+</body>
+</html>
