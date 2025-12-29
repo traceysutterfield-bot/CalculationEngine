@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Percentage Increase Calculator</title>
+  <meta name="description" content="Calculate percentage increase between two values quickly and accurately. Free and easy-to-use percentage increase calculator.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .back-link {
+      margin-top: 30px;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Percentage Increase Calculator</h1>
+
+  <p>
+    Use this calculator to find the percentage increase from an original value to a new value.
+  </p>
+
+  <label for="originalValue">Original Value</label>
+  <input type="number" id="originalValue" placeholder="Enter original value">
+
+  <label for="newValue">New Value</label>
+  <input type="number" id="newValue" placeholder="Enter new value">
+
+  <button onclick="calculateIncrease()">Calculate</button>
+
+  <div class="result" id="result"></div>
+
+  <a class="back-link" href="/">← Back to Calculation Engine</a>
+
+  <script>
+    function calculateIncrease() {
+      const original = parseFloat(document.getElementById('originalValue').value);
+      const newVal = parseFloat(document.getElementById('newValue').value);
+      const resultDiv = document.getElementById('result');
+
+      if (isNaN(original) || isNaN(newVal)) {
+        resultDiv.textContent = 'Please enter valid numbers.';
+        return;
+      }
+
+      if
