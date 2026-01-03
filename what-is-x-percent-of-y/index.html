@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>What Is X% of Y Calculator</title>
+  <meta name="description" content="Find out what X% of Y is instantly. Enter a percent and a number to calculate the result quickly with common questions and use cases.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>What Is X% of Y Calculator</h1>
+    <p>
+      Answer questions like “What is 15% of 80?” instantly (example: 15% of 80 = 12).
+    </p>
+  </header>
+
+  <main>
+    <!-- CALCULATOR UI -->
+    <section>
+      <label for="percentValue">Percent (X%)</label>
+      <input
+        type="number"
+        id="percentValue"
+        inputmode="decimal"
+        placeholder="Enter X (e.g., 15)"
+      >
+
+      <label for="numberValue">Number (Y)</label>
+      <input
+        type="number"
+        id="numberValue"
+        inputmode="decimal"
+        placeholder="Enter Y (e.g., 80)"
+      >
+
+      <button id="calcBtn" type="button">Calculate</button>
+
+      <div class="result" id="result" aria-live="polite"></div>
+
+      <a class="back-link" href="/">← Back to Calculation Engine</a>
+    </section>
+
+    <!-- SEO TEXT BLOCK (MATCHING YOUR ESTABLISHED FORMAT) -->
+    <section>
+      <h2>What This Calculator Does</h2>
+      <p>
+        This calculator answers questions written as “What is X% of Y?” by applying a percentage (X) to a number (Y).
+        It returns the percentage amount instantly.
+      </p>
+      <p>
+        It’s useful for discounts, tips, taxes, commissions, budgeting, and quick percentage checks when you don’t want
+        to do the math manually.
+      </p>
+
+      <h2>When Would You Use This Calculator?</h2>
+      <ul>
+        <li>Calculating a discount amount (like 30% of a price)</li>
+        <li>Finding a tip amount (like 18% of a restaurant bill)</li>
+        <li>Estimating tax or fees as a percent of a total</li>
+        <li>Calculating commissions or percentage-based payouts</li>
+        <li>Double-checking percentage math for work or school</li>
+      </ul>
+
+      <h2>Common Questions This Calculator Can Answer</h2>
+      <ul>
+        <li>What is 15% of 80?</li>
+        <li>What is 20% of 150?</li>
+        <li>What is 12.5% of 240?</li>
+        <li>How do I calculate X% of Y quickly?</li>
+        <li>What formula is used to calculate a percent of a number?</li>
+      </ul>
+
+      <h2>Related Calculators</h2>
+      <ul>
+        <li><a href="/percent-of-number/">Percent of a Number Calculator</a></li>
+        <li><a href="/reverse-percentage-calculator/">Reverse Percentage Calculator</a></li>
+        <li><a href="/percentage-difference-calculator/">Percentage Difference Calculator</a></li>
+        <li><a href="/percentage-change-calculator/">Percentage Change Calculator</a></li>
+        <li><a href="/percentage-increase-calculator/">Percentage Increase Calculator</a></li>
+        <li><a href="/percentage-decrease-calculator/">Percentage Decrease Calculator</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="/script.js" defer></script>
+
+  <!-- Inline logic (works even if script.js doesn’t yet include this calculator) -->
+  <script>
+    (function () {
+      const percentInput = document.getElementById("percentValue");
+      const numberInput = document.getElementById("numberValue");
+      const calcBtn = document.getElementById("calcBtn");
+      const resultEl = document.getElementById("result");
+
+      function fmt(n) {
+        if (!isFinite(n)) return "";
+        return Number(n).toFixed(10).replace(/\.?0+$/, "");
+      }
+
+      function calculate() {
+        const x = Number(percentInput.value);
+        const y = Number(numberInput.value);
+
+        if (!isFinite(x) || !isFinite(y)) {
+          resultEl.textContent = "Please enter valid numbers in both fields.";
+          return;
+        }
+
+        const result = (x / 100) * y;
+
+        resultEl.innerHTML =
+          `What is <strong>${fmt(x)}%</strong> of <strong>${fmt(y)}</strong>? ` +
+          `= <strong>${fmt(result)}</strong>`;
+      }
+
+      calcBtn.addEventListener("click", calculate);
+
+      [percentInput, numberInput].forEach((el) => {
+        el.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") calculate();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
