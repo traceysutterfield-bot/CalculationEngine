@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reverse Percentage Calculator</title>
+  <meta name="description" content="Reverse percentage calculator to find the original number. Calculate what number a value is a percent of, or find the original before a percent discount or increase.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>Reverse Percentage Calculator</h1>
+    <p>
+      Work backwards from a percentage. Find the original number from a percent of a total, or from a discount/increase.
+    </p>
+  </header>
+
+  <main>
+    <!-- CALCULATOR UI -->
+    <section>
+      <label for="mode">Calculation Type</label>
+      <select id="mode">
+        <option value="percentOf">X is P% of what number?</option>
+        <option value="discount">Final price after P% discount — original price?</option>
+        <option value="increase">Final value after P% increase — original value?</option>
+      </select>
+
+      <label for="valueInput" id="valueLabel">Value (X)</label>
+      <input
+        type="number"
+        id="valueInput"
+        inputmode="decimal"
+        placeholder="Enter value"
+      >
+
+      <label for="percentInput">Percent (P%)</label>
+      <input
+        type="number"
+        id="percentInput"
+        inputmode="decimal"
+        placeholder="Enter percent"
+      >
+
+      <button id="calcBtn" type="button">Calculate</button>
+
+      <div class="result" id="result" aria-live="polite"></div>
+
+      <a class="back-link" href="/">← Back to Calculation Engine</a>
+    </section>
+
+    <!-- SEO TEXT BLOCK (MATCHING YOUR ESTABLISHED FORMAT) -->
+    <section>
+      <h2>What This Calculator Does</h2>
+      <p>
+        This reverse percentage calculator helps you find the original number when you only know a percentage and a resulting value.
+        It’s the “work backwards” version of a percent-of-number calculation.
+      </p>
+      <p>
+        Use it to solve problems like “30 is 20% of what?” or to find an original price before a discount or increase.
+      </p>
+
+      <h2>When Would You Use This Calculator?</h2>
+      <ul>
+        <li>Finding the total when you know a part and its percentage</li>
+        <li>Calculating the original price before a percentage discount</li>
+        <li>Calculating the original value before a percentage increase</li>
+        <li>Reversing commissions, taxes, or percentage-based adjustments</li>
+        <li>Checking percentage math for bills, invoices, or reports</li>
+      </ul>
+
+      <h2>Common Questions This Calculator Can Answer</h2>
+      <ul>
+        <li>30 is 20% of what number?</li>
+        <li>If the final price is 80 after a 20% discount, what was the original price?</li>
+        <li>If a value increased 15% and is now 230, what was it before?</li>
+        <li>How do I reverse a percentage calculation?</li>
+        <li>What is the reverse percentage formula?</li>
+      </ul>
+
+      <h2>Related Calculators</h2>
+      <ul>
+        <li><a href="/percent-of-number/">Percent of a Number Calculator</a></li>
+        <li><a href="/what-is-x-percent-of-y/">What Is X% of Y Calculator</a></li>
+        <li><a href="/percentage-difference-calculator/">Percentage Difference Calculator</a></li>
+        <li><a href="/percentage-change-calculator/">Percentage Change Calculator</a></li>
+        <li><a href="/percentage-increase-calculator/">Percentage Increase Calculator</a></li>
+        <li><a href="/percentage-decrease-calculator/">Percentage Decrease Calculator</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="/script.js" defer></script>
+
+  <!-- Inline logic (works even if script.js doesn’t yet include this calculator) -->
+  <script>
+    (function () {
+      const modeEl = document.getElementById("mode");
+      const valueLabel = document.getElementById("valueLabel");
+      const valueInput = document.getElementById("valueInput");
+      const percentInput = document.getElementById("percentInput");
+      const calcBtn = document.getElementById("calcBtn");
+      const resultEl = document.getElementById("result");
+
+      function fmt(n) {
+        if (!isFinite(n)) return "";
+        return Number(n).toFixed(10).replace(/\.?0+$/, "");
+      }
+
+      function updateLabels() {
+        const mode = modeEl.value;
+        if (mode === "percentOf") {
+          valueLabel.textContent = "Value (X)";
+          valueInput.placeholder = "Enter value (e.g., 30)";
+          percentInput.placeholder = "Enter percent (e.g., 20)";
+        } else if (mode === "discount") {
+          valueLabel.textContent = "Final Price (after discount)";
+          valueInput.placeholder = "Enter final price (e.g., 80)";
+          percentInput.placeholder = "Enter discount percent (e.g., 20)";
+        } else {
+          valueLabel.textContent = "Final Value (after increase)";
+          valueInput.placeholder = "Enter final value (e.g., 230)";
+          percentInput.placeholder = "Enter increase percent (e.g., 15)";
+        }
+        resultEl.textContent = "";
+      }
+
+      function calculate() {
+        const mode = modeEl.value;
+        const v = Number(valueInput.value);
+        const p = Number(percentInput.value);
+
+        if (!isFinite(v) || !isFinite(p)) {
+          resultEl.textContent = "Please enter valid numbers in both fields.";
+          return;
+        }
+
+        if (p === 0) {
+          resultEl.textContent = "Percent cannot be 0 for a reverse percentage calculation.";
+          return;
+        }
+
+        let original;
+        let explanation = "";
+
+        if (mode === "percentOf") {
+          // X is P% of what number?  => W = X / (P/100)
+          original = v / (p / 100);
+          explanation = `${fmt(v)} is ${fmt(p)}% of <strong>${fmt(original)}</strong>.`;
+        } else if (mode === "discount") {
+          // Final = Original * (1 - P/100)  => Original = Final / (1 - P/100)
+          const factor = 1 - (p / 100);
+          if (factor <= 0) {
+            resultEl.textContent = "Discount percent must be less than 100%.";
+            return;
+          }
+          original = v / factor;
+          explanation = `Original price before a ${fmt(p)}% discount is <strong>${fmt(original)}</strong>.`;
+        } else {
+          // Final = Original * (1 + P/100)  => Original = Final / (1 + P/100)
+          const factor = 1 + (p / 100);
+          if (factor === 0) {
+            resultEl.textContent = "That percent creates an invalid calculation.";
+            return;
+          }
+          original = v / factor;
+          explanation = `Original value before a ${fmt(p)}% increase is <strong>${fmt(original)}</strong>.`;
+        }
+
+        resultEl.innerHTML = explanation;
+      }
+
+      modeEl.addEventListener("change", updateLabels);
+      calcBtn.addEventListener("click", calculate);
+
+      [valueInput, percentInput].forEach((el) => {
+        el.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") calculate();
+        });
+      });
+
+      updateLabels();
+    })();
+  </script>
+</body>
+</html>
