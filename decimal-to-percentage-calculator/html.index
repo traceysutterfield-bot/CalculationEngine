@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Decimal to Percentage Calculator</title>
+  <meta name="description" content="Convert a decimal to a percentage instantly. Enter a decimal number to find its percent equivalent with examples and common use cases.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>Decimal to Percentage Calculator</h1>
+    <p>
+      Convert a decimal into a percentage instantly (example: 0.25 = 25%).
+    </p>
+  </header>
+
+  <main>
+    <!-- CALCULATOR UI -->
+    <section>
+      <label for="decimalValue">Decimal Value</label>
+      <input
+        type="number"
+        id="decimalValue"
+        inputmode="decimal"
+        placeholder="Enter decimal (e.g., 0.25)"
+      >
+
+      <button id="calcBtn" type="button">Convert</button>
+
+      <div class="result" id="result" aria-live="polite"></div>
+
+      <a class="back-link" href="/">← Back to Calculation Engine</a>
+    </section>
+
+    <!-- SEO TEXT BLOCK (STANDARDIZED FORMAT) -->
+    <section>
+      <h2>What This Calculator Does</h2>
+      <p>
+        This decimal to percentage calculator converts a decimal number into its percentage equivalent.
+        It’s commonly used in math, finance, spreadsheets, and data analysis.
+      </p>
+      <p>
+        The conversion is done by multiplying the decimal by 100.
+        For example, 0.25 becomes 25%.
+      </p>
+
+      <h2>When Would You Use This Calculator?</h2>
+      <ul>
+        <li>Converting decimals into percentages for reports or formulas</li>
+        <li>Working with spreadsheet or financial calculations</li>
+        <li>Understanding probability or statistical values</li>
+        <li>Interpreting data expressed in decimal form</li>
+        <li>Quickly checking math conversions</li>
+      </ul>
+
+      <h2>Common Questions This Calculator Can Answer</h2>
+      <ul>
+        <li>What is 0.25 as a percentage?</li>
+        <li>How do I convert a decimal to a percentage?</li>
+        <li>What percentage is 0.075?</li>
+        <li>Why do I multiply a decimal by 100?</li>
+        <li>How do I convert decimals to percents quickly?</li>
+      </ul>
+
+      <h2>Related Calculators</h2>
+      <ul>
+        <li><a href="/percentage-to-decimal-calculator/">Percentage to Decimal Calculator</a></li>
+        <li><a href="/percent-of-number-calculator/">Percent of a Number Calculator</a></li>
+        <li><a href="/what-is-x-percent-of-y/">What Is X% of Y Calculator</a></li>
+        <li><a href="/reverse-percentage-calculator/">Reverse Percentage Calculator</a></li>
+        <li><a href="/percentage-difference-calculator/">Percentage Difference Calculator</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="/script.js" defer></script>
+
+  <!-- Inline logic -->
+  <script>
+    (function () {
+      const decimalInput = document.getElementById("decimalValue");
+      const calcBtn = document.getElementById("calcBtn");
+      const resultEl = document.getElementById("result");
+
+      function fmt(n) {
+        if (!isFinite(n)) return "";
+        return Number(n).toFixed(10).replace(/\.?0+$/, "");
+      }
+
+      function convert() {
+        const d = Number(decimalInput.value);
+
+        if (!isFinite(d)) {
+          resultEl.textContent = "Please enter a valid decimal number.";
+          return;
+        }
+
+        const percent = d * 100;
+
+        resultEl.innerHTML =
+          `<strong>${fmt(d)}</strong> as a percentage is <strong>${fmt(percent)}%</strong>.`;
+      }
+
+      calcBtn.addEventListener("click", convert);
+
+      decimalInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") convert();
+      });
+    })();
+  </script>
+</body>
+</html>
