@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Percent of a Number Calculator</title>
-  <meta name="description" content="Calculate any percent of a number instantly. Enter a percentage and a number to get the result with a clear formula and examples.">
+  <meta name="description" content="Calculate any percent of a number instantly. Enter a percentage and a number to find the result quickly and accurately.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
 
@@ -26,7 +26,7 @@
         type="number"
         id="percentValue"
         inputmode="decimal"
-        placeholder="Enter percent (e.g., 20)"
+        placeholder="Enter percent"
       >
 
       <label for="numberValue">Number</label>
@@ -34,7 +34,7 @@
         type="number"
         id="numberValue"
         inputmode="decimal"
-        placeholder="Enter number (e.g., 150)"
+        placeholder="Enter number"
       >
 
       <button id="calcBtn" type="button">Calculate</button>
@@ -44,16 +44,16 @@
       <a class="back-link" href="/">← Back to Calculation Engine</a>
     </section>
 
-    <!-- SEO TEXT BLOCK (light v1, you can refine later) -->
+    <!-- SEO TEXT BLOCK (light v1, consistent with your other pages) -->
     <section>
       <h2>What This Calculator Does</h2>
       <p>
-        This calculator finds the result of taking a percentage of a number (also written as “X% of Y”).
-        It’s commonly used for discounts, tips, tax, commissions, and quick mental-math checks.
+        This calculator finds the result of taking a percentage of a number (written as “X% of Y”).
+        It’s commonly used for discounts, tips, tax, commissions, and everyday percentage calculations.
       </p>
       <p>
         The formula is: <strong>(Percent ÷ 100) × Number</strong>.
-        For example, 20% of 150 = (20 ÷ 100) × 150 = 30.
+        Example: 20% of 150 = (20 ÷ 100) × 150 = 30.
       </p>
     </section>
 
@@ -63,8 +63,8 @@
         <li>What is 20% of 150?</li>
         <li>How do I calculate a percent of a number?</li>
         <li>What is 12.5% of 240?</li>
-        <li>How do I calculate discounts, tips, or tax as a percentage?</li>
-        <li>What is the percent of number formula?</li>
+        <li>How do I calculate discounts using percentages?</li>
+        <li>What is the percent-of-number formula?</li>
       </ul>
     </section>
 
@@ -74,17 +74,11 @@
         <li><a href="/what-is-x-percent-of-y/">What Is X% of Y Calculator</a></li>
         <li><a href="/reverse-percentage-calculator/">Reverse Percentage Calculator</a></li>
         <li><a href="/percentage-difference-calculator/">Percentage Difference Calculator</a></li>
-        <li><a href="/percentage-to-decimal-converter/">Percentage to Decimal Converter</a></li>
-        <li><a href="/decimal-to-percentage-converter/">Decimal to Percentage Converter</a></li>
-        <li><a href="/fraction-to-percentage-converter/">Fraction to Percentage Converter</a></li>
       </ul>
     </section>
   </main>
 
-  <!-- Keep your global script if you want -->
-  <script src="/script.js" defer></script>
-
-  <!-- Inline logic so this page works immediately even if /script.js doesn't include it yet -->
+  <!-- Inline script so this page works immediately (matches your single-page template style) -->
   <script>
     (function () {
       const percentInput = document.getElementById("percentValue");
@@ -92,9 +86,8 @@
       const calcBtn = document.getElementById("calcBtn");
       const resultEl = document.getElementById("result");
 
-      function formatNumber(n) {
+      function fmt(n) {
         if (!isFinite(n)) return "";
-        // Up to 10 decimals, strip trailing zeros
         return Number(n).toFixed(10).replace(/\.?0+$/, "");
       }
 
@@ -108,15 +101,13 @@
         }
 
         const result = (p / 100) * n;
-
         resultEl.innerHTML =
-          `<strong>${formatNumber(p)}%</strong> of <strong>${formatNumber(n)}</strong> = ` +
-          `<strong>${formatNumber(result)}</strong>`;
+          `<strong>${fmt(p)}%</strong> of <strong>${fmt(n)}</strong> = <strong>${fmt(result)}</strong>`;
       }
 
       calcBtn.addEventListener("click", calculate);
 
-      // Enter key calculates
+      // Enter key calculates (same UX pattern as your other calculators should follow)
       [percentInput, numberInput].forEach((el) => {
         el.addEventListener("keydown", (e) => {
           if (e.key === "Enter") calculate();
