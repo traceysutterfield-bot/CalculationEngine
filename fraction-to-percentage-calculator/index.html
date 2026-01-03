@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fraction to Percentage Calculator</title>
+  <meta name="description" content="Convert a fraction to a percentage instantly. Enter a numerator and denominator to find the percent result quickly with examples and common use cases.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>Fraction to Percentage Calculator</h1>
+    <p>
+      Convert any fraction into a percent (example: 3/4 = 75%).
+    </p>
+  </header>
+
+  <main>
+    <!-- CALCULATOR UI -->
+    <section>
+      <label for="numerator">Numerator</label>
+      <input
+        type="number"
+        id="numerator"
+        inputmode="decimal"
+        placeholder="Enter numerator (e.g., 3)"
+      >
+
+      <label for="denominator">Denominator</label>
+      <input
+        type="number"
+        id="denominator"
+        inputmode="decimal"
+        placeholder="Enter denominator (e.g., 4)"
+      >
+
+      <button id="calcBtn" type="button">Convert</button>
+
+      <div class="result" id="result" aria-live="polite"></div>
+
+      <a class="back-link" href="/">← Back to Calculation Engine</a>
+    </section>
+
+    <!-- SEO TEXT BLOCK (STANDARDIZED FORMAT) -->
+    <section>
+      <h2>What This Calculator Does</h2>
+      <p>
+        This fraction to percentage calculator converts a fraction into its percent equivalent.
+        It divides the numerator by the denominator to get a decimal, then multiplies by 100.
+      </p>
+      <p>
+        It’s useful for schoolwork, test prep, statistics, and everyday situations where you need to
+        interpret fractions as percentages.
+      </p>
+
+      <h2>When Would You Use This Calculator?</h2>
+      <ul>
+        <li>Converting fractions to percentages for homework or exams</li>
+        <li>Understanding proportions, ratios, or probabilities</li>
+        <li>Interpreting test scores or graded results</li>
+        <li>Working with statistics and data comparisons</li>
+        <li>Quickly converting common fractions like 1/2, 3/4, or 2/5</li>
+      </ul>
+
+      <h2>Common Questions This Calculator Can Answer</h2>
+      <ul>
+        <li>What is 3/4 as a percentage?</li>
+        <li>How do I convert a fraction to a percent?</li>
+        <li>What is 2/5 in percentage form?</li>
+        <li>What percent is 7/8?</li>
+        <li>What formula converts fractions into percentages?</li>
+      </ul>
+
+      <h2>Related Calculators</h2>
+      <ul>
+        <li><a href="/decimal-to-percentage-calculator/">Decimal to Percentage Calculator</a></li>
+        <li><a href="/percentage-to-decimal-calculator/">Percentage to Decimal Calculator</a></li>
+        <li><a href="/percent-of-number-calculator/">Percent of a Number Calculator</a></li>
+        <li><a href="/what-is-x-percent-of-y/">What Is X% of Y Calculator</a></li>
+        <li><a href="/reverse-percentage-calculator/">Reverse Percentage Calculator</a></li>
+        <li><a href="/percentage-difference-calculator/">Percentage Difference Calculator</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="/script.js" defer></script>
+
+  <!-- Inline logic -->
+  <script>
+    (function () {
+      const numInput = document.getElementById("numerator");
+      const denInput = document.getElementById("denominator");
+      const calcBtn = document.getElementById("calcBtn");
+      const resultEl = document.getElementById("result");
+
+      function fmt(n) {
+        if (!isFinite(n)) return "";
+        return Number(n).toFixed(10).replace(/\.?0+$/, "");
+      }
+
+      function convert() {
+        const numerator = Number(numInput.value);
+        const denominator = Number(denInput.value);
+
+        if (!isFinite(numerator) || !isFinite(denominator)) {
+          resultEl.textContent = "Please enter valid numbers for both numerator and denominator.";
+          return;
+        }
+
+        if (denominator === 0) {
+          resultEl.textContent = "Denominator cannot be 0.";
+          return;
+        }
+
+        const decimal = numerator / denominator;
+        const percent = decimal * 100;
+
+        resultEl.innerHTML =
+          `<strong>${fmt(numerator)}/${fmt(denominator)}</strong> as a percentage is ` +
+          `<strong>${fmt(percent)}%</strong>.`;
+      }
+
+      calcBtn.addEventListener("click", convert);
+
+      [numInput, denInput].forEach((el) => {
+        el.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") convert();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
