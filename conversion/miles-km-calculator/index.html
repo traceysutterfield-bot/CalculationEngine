@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Miles to Kilometers Calculator</title>
+  <meta name="description" content="Convert miles to kilometers instantly with this free Miles to Kilometers Calculator. Fast, accurate, and easy to use.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculationengine.net/conversion/miles-to-km-calculator/">
+
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <header>
+    <div class="site-brand">
+      <a href="/">CalculationEngine.net</a>
+    </div>
+
+    <h1>Miles to Kilometers Calculator</h1>
+    <p>
+      Convert miles to kilometers instantly with this simple and accurate distance conversion calculator.
+    </p>
+  </header>
+
+  <main>
+    <!-- CALCULATOR UI -->
+    <section class="calculator-card">
+      <label for="milesValue">Miles</label>
+      <input
+        type="number"
+        id="milesValue"
+        inputmode="decimal"
+        placeholder="Enter miles"
+      >
+
+      <button id="calcBtn" type="button">Calculate</button>
+
+      <div class="result" id="result" aria-live="polite"></div>
+
+      <a class="back-link" href="/">← Back to Calculation Engine</a>
+    </section>
+
+    <section>
+      <h2>What This Calculator Does</h2>
+      <p>
+        This miles to kilometers calculator converts a distance in miles into kilometers using the standard conversion formula.
+      </p>
+      <p>
+        It is useful for travel planning, running and walking distances, road trips, and understanding metric distance measurements.
+      </p>
+    </section>
+
+    <section>
+      <h2>Miles to Kilometers Formula</h2>
+      <p>
+        To convert miles to kilometers, multiply the number of miles by 1.60934.
+      </p>
+      <p>
+        <strong>Formula:</strong> Kilometers = Miles × 1.60934
+      </p>
+    </section>
+
+    <section>
+      <h2>Example Calculation</h2>
+      <p>
+        If you enter 10 miles:
+      </p>
+      <p>
+        10 × 1.60934 = 16.0934 kilometers
+      </p>
+      <p>
+        So, 10 miles equals 16.09 kilometers.
+      </p>
+    </section>
+
+    <section>
+      <h2>Common Questions This Calculator Can Answer</h2>
+      <ul>
+        <li>How many kilometers are in a mile?</li>
+        <li>How do I convert miles to kilometers?</li>
+        <li>What is 5 miles in kilometers?</li>
+        <li>What is 10 miles in kilometers?</li>
+        <li>What is the formula for miles to kilometers conversion?</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Related Calculators</h2>
+      <ul>
+        <li><a href="/conversion/km-to-miles-calculator/">Kilometers to Miles Calculator</a></li>
+        <li><a href="/conversion/lbs-to-kg-calculator/">Pounds to Kilograms Calculator</a></li>
+        <li><a href="/conversion/kg-to-lbs-calculator/">Kilograms to Pounds Calculator</a></li>
+        <li><a href="/conversion/celsius-to-fahrenheit-calculator/">Celsius to Fahrenheit Calculator</a></li>
+        <li><a href="/conversion/fahrenheit-to-celsius-calculator/">Fahrenheit to Celsius Calculator</a></li>
+        <li><a href="/conversion/inches-to-cm-calculator/">Inches to Centimeters Calculator</a></li>
+        <li><a href="/conversion/cm-to-inches-calculator/">Centimeters to Inches Calculator</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 CalculationEngine.net</p>
+  </footer>
+
+  <script>
+    document.getElementById("calcBtn").addEventListener("click", function () {
+      const miles = parseFloat(document.getElementById("milesValue").value);
+      const resultBox = document.getElementById("result");
+
+      if (isNaN(miles)) {
+        resultBox.textContent = "Please enter a valid number of miles.";
+        return;
+      }
+
+      const kilometers = miles * 1.60934;
+
+      resultBox.textContent = miles + " miles = " + kilometers.toFixed(2) + " kilometers";
+    });
+  </script>
+</body>
+</html>
