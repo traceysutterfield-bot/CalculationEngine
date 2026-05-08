@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Celsius to Fahrenheit Calculator</title>
+  <meta name="description" content="Convert Celsius to Fahrenheit instantly with this free Celsius to Fahrenheit Calculator. Fast, accurate, and easy to use.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculationengine.net/conversion/celsius-to-fahrenheit-calculator/">
+
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <header>
+    <div class="site-brand">
+      <a href="/">CalculationEngine.net</a>
+    </div>
+
+    <h1>Celsius to Fahrenheit Calculator</h1>
+    <p>
+      Convert Celsius to Fahrenheit instantly with this simple and accurate temperature conversion calculator.
+    </p>
+  </header>
+
+  <main>
+    <!-- CALCULATOR UI -->
+    <section class="calculator-card">
+      <label for="celsiusValue">Celsius</label>
+      <input
+        type="number"
+        id="celsiusValue"
+        inputmode="decimal"
+        placeholder="Enter Celsius"
+      >
+
+      <button id="calcBtn" type="button">Calculate</button>
+
+      <div class="result" id="result" aria-live="polite"></div>
+
+      <a class="back-link" href="/">← Back to Calculation Engine</a>
+    </section>
+
+    <section>
+      <h2>What This Calculator Does</h2>
+      <p>
+        This Celsius to Fahrenheit calculator converts a temperature in Celsius into Fahrenheit using the standard temperature conversion formula.
+      </p>
+      <p>
+        It is useful for weather conversions, cooking temperatures, science calculations, and understanding temperature measurements used in different countries.
+      </p>
+    </section>
+
+    <section>
+      <h2>Celsius to Fahrenheit Formula</h2>
+      <p>
+        To convert Celsius to Fahrenheit, multiply the Celsius temperature by 9/5 and then add 32.
+      </p>
+      <p>
+        <strong>Formula:</strong> Fahrenheit = (Celsius × 9/5) + 32
+      </p>
+    </section>
+
+    <section>
+      <h2>Example Calculation</h2>
+      <p>
+        If you enter 25 degrees Celsius:
+      </p>
+      <p>
+        (25 × 9/5) + 32 = 77°F
+      </p>
+      <p>
+        So, 25°C equals 77°F.
+      </p>
+    </section>
+
+    <section>
+      <h2>Common Questions This Calculator Can Answer</h2>
+      <ul>
+        <li>How do I convert Celsius to Fahrenheit?</li>
+        <li>What is 0°C in Fahrenheit?</li>
+        <li>What is 25°C in Fahrenheit?</li>
+        <li>What is the formula for Celsius to Fahrenheit conversion?</li>
+        <li>How many Fahrenheit degrees are in one Celsius degree?</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Related Calculators</h2>
+      <ul>
+        <li><a href="/conversion/fahrenheit-to-celsius-calculator/">Fahrenheit to Celsius Calculator</a></li>
+        <li><a href="/conversion/lbs-to-kg-calculator/">Pounds to Kilograms Calculator</a></li>
+        <li><a href="/conversion/kg-to-lbs-calculator/">Kilograms to Pounds Calculator</a></li>
+        <li><a href="/conversion/miles-to-km-calculator/">Miles to Kilometers Calculator</a></li>
+        <li><a href="/conversion/km-to-miles-calculator/">Kilometers to Miles Calculator</a></li>
+        <li><a href="/conversion/inches-to-cm-calculator/">Inches to Centimeters Calculator</a></li>
+        <li><a href="/conversion/cm-to-inches-calculator/">Centimeters to Inches Calculator</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 CalculationEngine.net</p>
+  </footer>
+
+  <script>
+    document.getElementById("calcBtn").addEventListener("click", function () {
+      const celsius = parseFloat(document.getElementById("celsiusValue").value);
+      const resultBox = document.getElementById("result");
+
+      if (isNaN(celsius)) {
+        resultBox.textContent = "Please enter a valid temperature in Celsius.";
+        return;
+      }
+
+      const fahrenheit = (celsius * 9 / 5) + 32;
+
+      resultBox.textContent = celsius + "°C = " + fahrenheit.toFixed(2) + "°F";
+    });
+  </script>
+</body>
+</html>
