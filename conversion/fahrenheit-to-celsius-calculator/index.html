@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fahrenheit to Celsius Calculator</title>
+  <meta name="description" content="Convert Fahrenheit to Celsius instantly with this free Fahrenheit to Celsius Calculator. Fast, accurate, and easy to use.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculationengine.net/conversion/fahrenheit-to-celsius-calculator/">
+
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <header>
+    <div class="site-brand">
+      <a href="/">CalculationEngine.net</a>
+    </div>
+
+    <h1>Fahrenheit to Celsius Calculator</h1>
+    <p>
+      Convert Fahrenheit to Celsius instantly with this simple and accurate temperature conversion calculator.
+    </p>
+  </header>
+
+  <main>
+    <!-- CALCULATOR UI -->
+    <section class="calculator-card">
+      <label for="fahrenheitValue">Fahrenheit</label>
+      <input
+        type="number"
+        id="fahrenheitValue"
+        inputmode="decimal"
+        placeholder="Enter Fahrenheit"
+      >
+
+      <button id="calcBtn" type="button">Calculate</button>
+
+      <div class="result" id="result" aria-live="polite"></div>
+
+      <a class="back-link" href="/">← Back to Calculation Engine</a>
+    </section>
+
+    <section>
+      <h2>What This Calculator Does</h2>
+      <p>
+        This Fahrenheit to Celsius calculator converts a temperature in Fahrenheit into Celsius using the standard temperature conversion formula.
+      </p>
+      <p>
+        It is useful for weather conversions, cooking temperatures, science calculations, and understanding temperature measurements used in different countries.
+      </p>
+    </section>
+
+    <section>
+      <h2>Fahrenheit to Celsius Formula</h2>
+      <p>
+        To convert Fahrenheit to Celsius, subtract 32 from the Fahrenheit temperature and then multiply by 5/9.
+      </p>
+      <p>
+        <strong>Formula:</strong> Celsius = (Fahrenheit − 32) × 5/9
+      </p>
+    </section>
+
+    <section>
+      <h2>Example Calculation</h2>
+      <p>
+        If you enter 77 degrees Fahrenheit:
+      </p>
+      <p>
+        (77 − 32) × 5/9 = 25°C
+      </p>
+      <p>
+        So, 77°F equals 25°C.
+      </p>
+    </section>
+
+    <section>
+      <h2>Common Questions This Calculator Can Answer</h2>
+      <ul>
+        <li>How do I convert Fahrenheit to Celsius?</li>
+        <li>What is 32°F in Celsius?</li>
+        <li>What is 77°F in Celsius?</li>
+        <li>What is the formula for Fahrenheit to Celsius conversion?</li>
+        <li>How many Celsius degrees are in one Fahrenheit degree?</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Related Calculators</h2>
+      <ul>
+        <li><a href="/conversion/celsius-to-fahrenheit-calculator/">Celsius to Fahrenheit Calculator</a></li>
+        <li><a href="/conversion/lbs-to-kg-calculator/">Pounds to Kilograms Calculator</a></li>
+        <li><a href="/conversion/kg-to-lbs-calculator/">Kilograms to Pounds Calculator</a></li>
+        <li><a href="/conversion/miles-to-km-calculator/">Miles to Kilometers Calculator</a></li>
+        <li><a href="/conversion/km-to-miles-calculator/">Kilometers to Miles Calculator</a></li>
+        <li><a href="/conversion/inches-to-cm-calculator/">Inches to Centimeters Calculator</a></li>
+        <li><a href="/conversion/cm-to-inches-calculator/">Centimeters to Inches Calculator</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 CalculationEngine.net</p>
+  </footer>
+
+  <script>
+    document.getElementById("calcBtn").addEventListener("click", function () {
+      const fahrenheit = parseFloat(document.getElementById("fahrenheitValue").value);
+      const resultBox = document.getElementById("result");
+
+      if (isNaN(fahrenheit)) {
+        resultBox.textContent = "Please enter a valid temperature in Fahrenheit.";
+        return;
+      }
+
+      const celsius = (fahrenheit - 32) * 5 / 9;
+
+      resultBox.textContent = fahrenheit + "°F = " + celsius.toFixed(2) + "°C";
+    });
+  </script>
+</body>
+</html>
